@@ -100,7 +100,7 @@ final class Twig_TokenStream
     public function look($number = 1)
     {
         if (!isset($this->tokens[$this->current + $number])) {
-            throw new Twig_Error_Syntax('Unexpected end of template.', $this->tokens[$this->current + $number - 1]->getLine(), $this->source);
+            throw new Twig_Error_Syntax('Unexpected end of template.', $this->tokens[$this->current + $number + (($number < 0) ? + 1 : - 1)]->getLine(), $this->source);
         }
 
         return $this->tokens[$this->current + $number];
